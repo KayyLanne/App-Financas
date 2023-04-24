@@ -1,8 +1,9 @@
-import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, FlatList} from 'react-native';
+
 import Header from '../../Components/Header'
 import Balance from '../../Components/Balance';
 import Movements from '../../Components/Movements';
+import Actions  from '../../Components/Actions';
 
 const list = [
     {
@@ -37,7 +38,9 @@ return (
     <View style={styles.container}>
         <Header name="Kaylanne Regina" />
         
-        <Balance saldo="9.152,00" gastos="630,00"/>
+        <Balance saldo="9.152,00" gastos="-630,00"/>
+
+        <Actions></Actions>
 
         <Text style={styles.title}>Últimas movimentações</Text>
 
@@ -46,7 +49,7 @@ return (
             data={list}
             keyExtractor={ (item) => String(item.id)}
             showsVerticalScrollIndicator={false}
-            renderItem={ ( {item} ) => <Text> <Movements data={item} /> </Text>}
+            renderItem={ ( {item} ) =>  <Movements data={item}/>}
         />
 
     </View>
@@ -61,9 +64,7 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 18,
         fontWeight: 'bold',
-        marginLeft: 14,
-        marginRight: 14,
-        marginTop: 14,
+        margin: 14,
     },
     list: {
         marginStart: 14,
